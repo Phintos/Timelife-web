@@ -16,9 +16,11 @@ class CreateMediaTable extends Migration
          Schema::create('media', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user');
-            $table->integer('id_mood');
-            $table->integer('id_comment');
             $table->string('type');
+            $table->string('title');
+            $table->text('body');
+            $table->string('mood');
+            $table->string('mediaUrl');
             $table->timestamps();
         });
     }

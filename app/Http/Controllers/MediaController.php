@@ -42,9 +42,11 @@ class MediaController extends Controller
 
         $media->id = $request->input('media_id');
         $media->id_user = $request->input('id_user');
-        $media->id_mood = $request->input('id_mood');
-        $media->id_comment = $request->input('id_comment');
+        $media->mood = $request->input('mood');
+        $media->title = $request->input('title');
+        $media->body = $request->input('body');
         $media->type = $request->input('type');
+        $media->mediaUrl = $request->input('mediaUrl');
 
         if($media->save()) {
             return new MediaResource($media);
