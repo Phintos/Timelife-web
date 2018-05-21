@@ -35,6 +35,9 @@ Route::get('user/{id}', 'UserController@show');
 
 Route::post('media', 'MediaController@store');
 
+
+
+
 Route::post('user', 'UserController@store');
 
 // update media...

@@ -18,6 +18,8 @@ class MediaController extends Controller
         $media = Media::paginate(15);
 
         return MediaResource::collection($media);
+
+        dd($media);
     }
 
     /**
