@@ -31,12 +31,11 @@ Route::get('media/{id}', 'MediaController@show');
 
 Route::get('user/{id}', 'UserController@show');
 
+Route::get('calendar/{id}', 'CalendarController@show');
+
 //create new media...
 
 Route::post('media', 'MediaController@store');
-
-
-
 
 Route::post('user', 'UserController@store');
 
@@ -47,4 +46,3 @@ Route::put('user', 'UserController@store');
 //destroy media...
 Route::delete('media/{id}', 'MediaController@destroy');
 Route::delete('user/{id}', 'UserController@destroy');
-

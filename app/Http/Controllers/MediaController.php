@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Media;
+use App\Calendar;
 use App\Http\Resources\Media as MediaResource;
 
 class MediaController extends Controller
@@ -42,13 +43,18 @@ class MediaController extends Controller
     {
         $media = $request->isMethod('put') ? Media::findOrFail($request->media_id) : new Media;
 
-        $media->id = $request->input('media_id');
+        //$media->id = $request->input('media_id');
         $media->id_user = $request->input('id_user');
+        $media->id_calendar = $request->input('id_calendar');
         $media->mood = $request->input('mood');
         $media->title = $request->input('title');
         $media->body = $request->input('body');
         $media->type = $request->input('type');
         $media->mediaUrl = $request->input('mediaUrl');
+
+        $cal = Calendar::findOrFail($media->id_calendar);
+        $cal->mood = $cal->mood . $request->input('mood');
+        $cal->save();
 
         if($media->save()) {
             return new MediaResource($media);

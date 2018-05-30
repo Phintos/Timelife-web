@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'gender', 'location', 'type', 
+        'name', 'email', 'password', 'gender', 'location', 'type',
     ];
 
     /**
@@ -30,13 +30,19 @@ class User extends Authenticatable
     public function media() {
 
         return $this->hasMany('App\Media');
-    
+
+    }
+
+    public function calendar() {
+
+        return $this->hasMany('App\Calendar');
+
     }
 
     const ADMIN_TYPE = 'admin';
     const DEFAULT_TYPE = 'default';
-    
-    public function isAdmin()    {        
-        return $this->type === self::ADMIN_TYPE;    
+
+    public function isAdmin()    {
+        return $this->type === self::ADMIN_TYPE;
     }
 }
